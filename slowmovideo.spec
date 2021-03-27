@@ -69,30 +69,30 @@ sed -i -e 's|flowRW_sV.h|../include/flowRW_sV.h|' v3d-flow-builder-%{commit2}/sr
 
 %build
 pushd v3d-flow-builder-%{commit2}
-%cmake \
+%cmake3 \
   -DUSE_DBUS=ON \
   -DOpenGL_GL_PREFERENCE=GLVND \
   -DDISABLE_INCLUDE_SOURCE=ON \
   -DENABLE_TESTS=ON
 
-%cmake_build
+%cmake3_build
 popd
 
 %cmake \
   -DUSE_DBUS=ON \
   -DENABLE_TESTS=ON
 
-%cmake_build
+%cmake3_build
 
 
 %install
 pushd v3d-flow-builder-%{commit2}
 
-%cmake_install
+%cmake3_install
 
 popd
 
-%cmake_install
+%cmake3_install
 
 # Fix and validate desktop
 sed -i -e 's|/usr/share/icons/AppIcon|slowmoUI|' \
