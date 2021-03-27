@@ -1,3 +1,6 @@
+# Need undefine to build on F32
+%undefine __cmake_in_source_build
+
 # sources for slowmoVideo
 %global commit0 279026ad91e034e49c712e8b7a02b3e109f1af2d
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
