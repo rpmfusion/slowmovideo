@@ -1,6 +1,3 @@
-# Need undefine to build on F32
-%undefine __cmake_in_source_build
-
 # sources for slowmoVideo
 %global commit0 279026ad91e034e49c712e8b7a02b3e109f1af2d
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
@@ -16,7 +13,7 @@
 
 Name:           slowmovideo
 Version:        0.6.0
-Release:        5.%{?date0}git%{?shortcommit0}%{?dist}
+Release:        6.%{?date0}git%{?shortcommit0}%{?dist}
 Summary:        Tool that uses optical flow for generating slow-motion videos
 
 License:        GPLv3+
@@ -27,7 +24,7 @@ Source2:        %{url}/v3d-flow-builder/archive/%{commit2}/v3d-flow-builder-%{sh
 
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  cmake3
+BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  make
 
@@ -69,30 +66,30 @@ sed -i -e 's|flowRW_sV.h|../include/flowRW_sV.h|' v3d-flow-builder-%{commit2}/sr
 
 %build
 pushd v3d-flow-builder-%{commit2}
-%cmake3 \
+%cmake \
   -DUSE_DBUS=ON \
   -DOpenGL_GL_PREFERENCE=GLVND \
   -DDISABLE_INCLUDE_SOURCE=ON \
   -DENABLE_TESTS=ON
 
-%cmake3_build
+%cmake_build
 popd
 
 %cmake \
   -DUSE_DBUS=ON \
   -DENABLE_TESTS=ON
 
-%cmake3_build
+%cmake_build
 
 
 %install
 pushd v3d-flow-builder-%{commit2}
 
-%cmake3_install
+%cmake_install
 
 popd
 
-%cmake3_install
+%cmake_install
 
 # Fix and validate desktop
 sed -i -e 's|/usr/share/icons/AppIcon|slowmoUI|' \
@@ -128,6 +125,9 @@ cd -
 
 
 %changelog
+* Thu Feb 17 2022 Leigh Scott <leigh123linux@gmail.com> - 0.6.0-6.20200516git279026a
+- Rebuild for libGLEW
+
 * Wed Feb 09 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.6.0-5.20200516git279026a
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
