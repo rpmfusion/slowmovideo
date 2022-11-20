@@ -1,7 +1,7 @@
 # sources for slowmoVideo
-%global commit0 279026ad91e034e49c712e8b7a02b3e109f1af2d
+%global commit0 6491047551927b0b80c052288eceed476baf7b47
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global date0 20200516
+%global date0 20221024
 
 # sources for libsvflow
 %global commit1 7c31a0bf9467e774442473e8b951b09fe6eb1b9f
@@ -12,8 +12,8 @@
 %global shortcommit2 %(c=%{commit2}; echo ${c:0:7})
 
 Name:           slowmovideo
-Version:        0.6.0
-Release:        8.%{?date0}git%{?shortcommit0}%{?dist}
+Version:        0.6.1
+Release:        1.%{?date0}git%{?shortcommit0}%{?dist}
 Summary:        Tool that uses optical flow for generating slow-motion videos
 
 License:        GPLv3+
@@ -125,6 +125,9 @@ cd -
 
 
 %changelog
+* Sun Nov 20 2022 Sérgio Basto <sergio@serjux.com> - 0.6.1-1.20221024git6491047
+- Update slowmovideo to 0.6.1
+
 * Sun Aug 07 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.6.0-8.20200516git279026a
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1
