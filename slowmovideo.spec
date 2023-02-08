@@ -13,7 +13,7 @@
 
 Name:           slowmovideo
 Version:        0.6.1
-Release:        1.%{?date0}git%{?shortcommit0}%{?dist}
+Release:        2.%{?date0}git%{?shortcommit0}%{?dist}
 Summary:        Tool that uses optical flow for generating slow-motion videos
 
 License:        GPLv3+
@@ -125,6 +125,9 @@ cd -
 
 
 %changelog
+* Wed Feb 08 2023 Leigh Scott <leigh123linux@gmail.com> - 0.6.1-2.20221024git6491047
+- Rebuild for new opencv
+
 * Sun Nov 20 2022 Sérgio Basto <sergio@serjux.com> - 0.6.1-1.20221024git6491047
 - Update slowmovideo to 0.6.1
 
