@@ -1,24 +1,26 @@
 # sources for slowmoVideo
-%global commit0 6491047551927b0b80c052288eceed476baf7b47
-%global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global date0 20221024
+#%%global commit0 0787a4547b3ee8de2cb8ef954f562985eb7d4950
+#%%global shortcommit0 %%(c=%%{commit0}; echo ${c:0:7})
+#%%global date0 20221219
 
 # sources for libsvflow
 %global commit1 7c31a0bf9467e774442473e8b951b09fe6eb1b9f
 %global shortcommit1 %(c=%{commit1}; echo ${c:0:7})
 
 # sources for flowBuilder
-%global commit2 0fbd6ea63fb43651a09418394d512b71f8eb3025
+%global commit2 6dfe8d62273c4ac2cb407d3c366bfb1ca03a06f9
 %global shortcommit2 %(c=%{commit2}; echo ${c:0:7})
 
 Name:           slowmovideo
-Version:        0.6.1
-Release:        2.%{?date0}git%{?shortcommit0}%{?dist}
+Version:        0.6.2
+#Release:        1.%%{?date0}git%%{?shortcommit0}%%{?dist}
+Release:        1%{?dist}
 Summary:        Tool that uses optical flow for generating slow-motion videos
 
 License:        GPLv3+
 URL:            https://github.com/slowmoVideo
-Source0:        %{url}/slowmoVideo/archive/%{commit0}/%{name}-%{shortcommit0}.tar.gz
+#Source0:        %%{url}/slowmoVideo/archive/%%{commit0}/%%{name}-%%{shortcommit0}.tar.gz
+Source0:        %{url}/slowmoVideo/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        %{url}/libsvflow/archive/%{commit1}/libsvflow-%{shortcommit1}.tar.gz
 Source2:        %{url}/v3d-flow-builder/archive/%{commit2}/v3d-flow-builder-%{shortcommit2}.tar.gz
 
@@ -50,9 +52,9 @@ slowmoVideo is an OpenSource program that creates slow-motion
 videos from your footage.
 
 %prep
-%autosetup -p1 -n slowmoVideo-%{commit0}
-%autosetup -T -D -a 1 -p1 -n slowmoVideo-%{commit0}
-%autosetup -T -D -a 2 -p1 -n slowmoVideo-%{commit0}
+%autosetup -p1 -n slowmoVideo-%{version}
+%autosetup -T -D -a 1 -p1 -n slowmoVideo-%{version}
+%autosetup -T -D -a 2 -p1 -n slowmoVideo-%{version}
 rmdir src/lib/libsvflow v3d-flow-builder-%{commit2}/src/lib/libsvflow
 cp -pr libsvflow-%{commit1} src/lib/libsvflow
 ln -s ../../../src/lib/libsvflow v3d-flow-builder-%{commit2}/src/lib/libsvflow
@@ -125,6 +127,9 @@ cd -
 
 
 %changelog
+* Sat Mar 11 2023 Sérgio Basto <sergio@serjux.com> - 0.6.2-1
+- Update slowmovideo to 0.6.2
+
 * Wed Feb 08 2023 Leigh Scott <leigh123linux@gmail.com> - 0.6.1-2.20221024git6491047
 - Rebuild for new opencv
 
