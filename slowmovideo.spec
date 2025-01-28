@@ -14,7 +14,7 @@
 Name:           slowmovideo
 Version:        0.6.2
 #Release:        1.%%{?date0}git%%{?shortcommit0}%%{?dist}
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Tool that uses optical flow for generating slow-motion videos
 
 License:        GPLv3+
@@ -127,6 +127,9 @@ cd -
 
 
 %changelog
+* Tue Jan 28 2025 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.6.2-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
 * Fri Aug 02 2024 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.6.2-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
